@@ -1,0 +1,85 @@
+Hi Pierre,
+
+Thanks for the package it works well for multivariate case!
+A quick follow-up question is, can this mdcov function take samples with missing values? 
+If not, do you have any suggestion how to handle this case? As I understand this test is 
+based on empirical characteristic function, thus I guess there is some way to calculate 
+the test statistics ignoring the missing entries for each random variable?
+
+Thanks and happy new year 2018!
+
+Best,
+Chongliang
+chongliang.luo@uconn.edu
+
+#####################################################
+
+From: Ivan Krylov <krylov.r00t@gmail.com>
+
+May I suggest once again the idea of writing a Fortran 2003 wrapper
+zhpevxC instead of C++? Subroutines defined using iso_c_binding are
+guaranteed to follow the C calling convention, and, this being Fortran,
+call zhpevx(...) is guaranteed to match the Fortran calling convention,
+bringing you the best of both worlds:
+
+https://stat.ethz.ch/pipermail/r-package-devel/2020q3/005710.html
+
+No need to allocate or deallocate memory or provide different
+definitions depending on the availability of FC_LEN_T, just make sure
+that both prototypes mean the same thing. By the way,
+std::complex<double> is guaranteed to match the memory layout of C type
+double _Complex and Fortran type complex(kind = c_double_complex) by
+the respective standards.
+
+What _might_ help is adapting the incantation from [*] to redefine
+FC_LEN_T to int on older GCC:
+
+#if defined(__GNUC__) && __GNUC__ < 7
+ /* Rconfig.h #define doesn't match the actual type
+  * of hidden length argument in old gfortran */
+ #define FC_LEN_T int
+#else
+ /* Otherwise we use the #define from Rconfig.h */
+ #define USE_FC_LEN_T
+#endif
+/* Your code starts here */
+#include <R.h>
+/* ... */
+
+Another option that _should_ help is rewriting zhpevxC in Fortran
+2003 using its bind(c) feature. The C interoperability would ensure that
+the resulting function is callable from C, while the fact that it's
+written in Fortran should make it safe to call other Fortran functions:
+
+subroutine zhpevxC(jobz, range, uplo, n, ap, vl, vu, il, iu, &
+                   abstol, m, w, z, ldz, work, rwork, iwork, &
+                   ifail, info) bind(c, name='zhpevxC')
+ use, intrinsic :: iso_c_binding, only: c_char, c_int, c_double, &
+                                        c_double_complex
+
+ character(kind = c_char) :: jobz, range, uplo
+ integer(kind = c_int) :: il, info, iu, ldz, m, n
+ real(kind = c_double) :: abstol, vl, vu
+ integer(kind = c_int) :: ifail( * ), iwork( * )
+ real(kind = c_double) :: rwork( * ), w( * )
+ complex(kind = c_double_complex) :: ap( * ), work( * ), z( ldz, * )
+
+ call zhpevx(JOBZ, RANGE, UPLO, N, AP, VL, VU, IL, IU, &
+             abstol, m, w, z, ldz, work, rwork, iwork, &
+             ifail, info)
+
+end subroutine
+
+A subroutine defined like this can be represented by the following C++
+prototype:
+
+extern "C" void zhpevx(
+        char * JOBZ, char * RANGE, char * UPLO, int * N,
+        std::complex<double> * AP, double * VL, double * VU, int * IL,
+        int * IU, double * abstol, int * m, double * w,
+        std::complex<double> * z, int * ldz, std::complex<double> *
+        work, double * rwork, int * iwork, int * ifail, int * info
+);
+
+This is the approach described in WRE 6.6.1 Fortran character strings
+near the code block with the definition of subroutine c_dgemm.

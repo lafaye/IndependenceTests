@@ -1,0 +1,44 @@
+2011-04-04
+----------
+
+Version 0.1 : First version of package IndependenceTests
+
+2012-12-10
+----------
+
+Version 0.2:
+- I added a NAMESPACE file
+- I removed file zzz.R
+- I commented out a "cout" call in file normeRnAwR.cpp
+- I modified the files A-dep-tests.Rd and dependogram.Rd by adding some \donttest{} blocks.
+
+2020-04-29
+----------
+
+Version 0.4:
+- I removed a require(xtable) in file A-dep-tests.R
+- I added CompQuadForm and MASS in NAMESPACE file
+- I added the functions mdcov, mdcov.pval and mdcov.lambdas and the associated help files
+- I added several C, C++, and Fortran files in the src/ directory
+- I modified 'vecd.ou.p' into 'vecd.or.p'
+- I completed the documentation files that needed to be.
+- I removed in the DESCRIPTION file the dependence (or suggestion) upon Rmpi, snow and rsprng, and now rely on package parallel for everything. I also modify accordingly the file dependogram.R
+- I corrected an incorrect use of the function is.loaded() to check if some packages are loaded
+- I changed exp(gamma()) to gammafn() in file cubature1.cpp
+- I changed my email address to lafaye@unsw.edu.au
+- I added a file mycomplex.h to deal with complex numbers in C
+
+2020-12-18
+----------
+
+Version 0.5:
+- I modified the content of file myzhpevx.cpp to prevent an LTO error
+- I added a reference in file mdcov.Rd
+- I added three references in the Description field of file DESCRIPTION
+
+2020-12-19
+----------
+
+Version 0.6:
+- I modified the file myzhpevx.cpp
+

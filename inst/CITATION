@@ -1,0 +1,16 @@
+citHeader("To cite the IndependenceTests package in publications use:")
+
+citEntry(entry="Manual",
+         title = "IndependenceTests",
+         author = personList(as.person("Pierre Lafaye de Micheaux")
+				),
+         year         = 2020,
+         note         = "Software: R Package, IndependenceTests, version 0.5",
+         
+         textVersion = 
+         paste("Lafaye De Micheaux, P. (2020)", 
+              "(Software: R Package, IndependenceTests, version 0.5)"
+	      )
+)
+
+

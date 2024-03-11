@@ -1,0 +1,11 @@
+SOURCES = IndependenceTests_init.c Cnhat.cpp cubature1.cpp dependogram.cpp mdcov.cpp phinhat.cpp zhpevx.f myzhpevx.cpp othersfortran/disnan.f othersfortran/dlaebz.f othersfortran/dlagts.f othersfortran/dlanst.f othersfortran/dlarnv.f othersfortran/dlascl.f othersfortran/dstebz.f othersfortran/ilaenv.f othersfortran/iparmq.f othersfortran/zhptrd.f othersfortran/zlarf.f othersfortran/zlasr.f othersfortran/zsteqr.f othersfortran/zupgtr.f othersfortran/dladiv.f othersfortran/dlaev2.f othersfortran/dlaisnan.f othersfortran/dlapy2.f othersfortran/dlartg.f othersfortran/dlasrt.f othersfortran/dsterf.f othersfortran/ilazlc.f othersfortran/lsame.f othersfortran/zladiv.f othersfortran/zlarfg.f othersfortran/zlassq.f othersfortran/zung2l.f othersfortran/zupmtr.f othersfortran/dlae2.f othersfortran/dlagtf.f othersfortran/dlamch.f othersfortran/dlapy3.f othersfortran/dlaruv.f othersfortran/dlassq.f othersfortran/ieeeck.f othersfortran/ilazlr.f othersfortran/xerbla.f othersfortran/zlanhp.f othersfortran/zlaset.f othersfortran/zstein.f othersfortran/zung2r.f
+OBJECTS = IndependenceTests_init.o Cnhat.o cubature1.o dependogram.o mdcov.o phinhat.o zhpevx.o myzhpevx.o othersfortran/disnan.o othersfortran/dlaebz.o othersfortran/dlagts.o othersfortran/dlanst.o othersfortran/dlarnv.o othersfortran/dlascl.o othersfortran/dstebz.o othersfortran/ilaenv.o othersfortran/iparmq.o othersfortran/zhptrd.o othersfortran/zlarf.o othersfortran/zlasr.o othersfortran/zsteqr.o othersfortran/zupgtr.o othersfortran/dladiv.o othersfortran/dlaev2.o othersfortran/dlaisnan.o othersfortran/dlapy2.o othersfortran/dlartg.o othersfortran/dlasrt.o othersfortran/dsterf.o othersfortran/ilazlc.o othersfortran/lsame.o othersfortran/zladiv.o othersfortran/zlarfg.o othersfortran/zlassq.o othersfortran/zung2l.o othersfortran/zupmtr.o othersfortran/dlae2.o othersfortran/dlagtf.o othersfortran/dlamch.o othersfortran/dlapy3.o othersfortran/dlaruv.o othersfortran/dlassq.o othersfortran/ieeeck.o othersfortran/ilazlr.o othersfortran/xerbla.o othersfortran/zlanhp.o othersfortran/zlaset.o othersfortran/zstein.o othersfortran/zung2r.o
+
+PKG_LIBS=$(LAPACK_LIBS) $(BLAS_LIBS) $(FLIBS)
+
+SLAMC_FFLAGS=$(R_XTRA_FFLAGS) $(PKG_FFLAGS) $(FPICFLAGS) $(SHLIB_FFLAGS) $(SAFE_FFLAGS)
+
+#CXXFLAGS=$(CXXPICFLAGS) $(SHLIB_CFLAGS)
+#CFLAGS=$(CPICFLAGS) $(SHLIB_CFLAGS)
+
+all: $(SHLIB)
