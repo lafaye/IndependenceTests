@@ -1,6 +1,6 @@
-.onLoad <- function(lib, pkg){
-
-    library.dynam("IndependenceTests", pkg, lib)
-    
-}
+# .onLoad <- function(lib, pkg){
+# 
+#     library.dynam("IndependenceTests", pkg, lib)
+#     
+# }
 

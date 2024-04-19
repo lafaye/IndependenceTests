@@ -1,0 +1,8 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^ignore$
+src/*.dll
+^TODO$
+\.o$
+\.so$
+\.dll$
