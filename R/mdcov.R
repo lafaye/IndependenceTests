@@ -1,13 +1,20 @@
-#####################################
-# Computation of the test statistic #
-#####################################
+#' Computation of the test statistic
+#'
+#' @param X matrix of size n x q
+#' @param vecd vector of length p giving the sizes q_1,...,q_p of each one of the p subvectors
+#' @param a real number (parameter in the w() weight function)
+#' @param weight.choice weight.choice of the weight function as described in our paper.
+#' @param N ...
+#' @param cubature ...
+#' @param K ...
+#' @param epsrel ...
+#' @param norming ...
+#' @param thresh.eigen ...
+#' @param estim.a ...
+#' @param Cpp ...
+#' @param pval.comp ...
 
-# X : matrix of size n x q
-# vecd: vector of length p giving the sizes q_1,...,q_p of each one of the p subvectors. 
-# We have q=\sum_{l=1}^p q_l.
-# a: real number (parameter in the w() weight function)
-# weight.choice: weight.choice of the weight function as described in our paper.
-
+#' @export
 mdcov <- function(X, vecd, a = 1, weight.choice = 1, N = 200, cubature = FALSE,
                   K = 100, epsrel = 10 ^ -6, norming = TRUE,
                   thresh.eigen = 10 ^ -8, estim.a = FALSE, Cpp = TRUE, pval.comp = TRUE) {

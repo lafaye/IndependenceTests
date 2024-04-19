@@ -32,3 +32,6 @@ Packaged: 2020-12-19 11:23:07 UTC; lafaye
 Copyright: For LAPACK/BLAS routines in src (Univ. of Tennessee, Univ. of California Berkeley, NAG Ltd.,
         Courant Institute, Argonne National Lab, and Rice University).
 NeedsCompilation: yes
+RoxygenNote: 7.3.1
+Encoding: UTF-8
+LazyData: true
