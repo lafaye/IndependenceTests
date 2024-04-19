@@ -1,0 +1,20 @@
+#' High school recreational drug use data
+#'
+#' A subset of highschool data on alcohol, cigarette and marijuana use for
+#' highschool seniors. Data from a 1992 survey by the Wright State University 
+#' School ofMedecine and the United Health Services in Dayton, Ohio. The survey
+#' asked 2276 students in their final year of highschool in a nonurban area
+#' near Dayton, Ohio, whether they had ever used alcohol, cigarettes, or 
+#' marijuana.
+#'
+#' @format ## `highschool`
+#' A data frame with 8rows and 4 columns:
+#' \describe{
+#'   \item{alcohol}{Logical, 1, 2}
+#'   \item{cigarette}{Logical, 1, 2}
+#'   \item{marijuana}{Logical, 1, 2}
+#'   \item{count}{A numeric vector of frequencies}
+#'   ...
+#' }
+#' @source Agresti A. (2002). Categorical data analysis, Wiley, p. 322.
+"highschool"

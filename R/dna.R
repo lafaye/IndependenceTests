@@ -1,0 +1,15 @@
+#' DNA data
+#'
+#' This data from Whisenant et al. (1991) is a nucleotides sequence of 4156
+#' base pairs (bp). The categorical variable represents the
+#' nucleotide which is either one of the two purines (r), adenine (a) or
+#' guanine (g), or one of the two pyrimidines (y), cytosine (c) or thymine (t).
+#' 
+#'
+#' @format ## `dna`
+#' A character vector of length 70 representing 70 consecutive segments of
+#' a dna strand of length 4156.
+#' @source Whisenant E.C., Rasheed B.K.A., Ostrer H., Bhatnagar 
+#' Y.M. (1991). Evolution and sequence analysis of a human Y-chromosomal
+#' DNA fragment, J. Mol. Evol., 33, 133-141.
+"dna"
