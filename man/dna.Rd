@@ -5,12 +5,14 @@
 \alias{dna}
 \title{DNA data}
 \format{
-## `dna`
+\subsection{\code{dna}}{
+
 A character vector of length 70 representing 70 consecutive segments of
 a dna strand of length 4156.
 }
+}
 \source{
-Whisenant E.C., Rasheed B.K.A., Ostrer H., Bhatnagar 
+Whisenant E.C., Rasheed B.K.A., Ostrer H., Bhatnagar
 Y.M. (1991). Evolution and sequence analysis of a human Y-chromosomal
 DNA fragment, J. Mol. Evol., 33, 133-141.
 }

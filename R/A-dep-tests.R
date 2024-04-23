@@ -1,3 +1,31 @@
+#' Tests for mutual or serial independence between categorical variables
+#'
+#' The tests are constructed from the \enc{Möbius}{Mobius} transformation
+#' applied to the probability cells in a multi-way contingency table. The
+#' Pearson chi-squared test of mutual independence is partitioned into
+#' A-dependence statistics over all subsets A of variables. The goal of the
+#' partition is to identify subsets of dependent variables when the mutual
+#' independence hypothesis is rejected by the Pearson chi-squared test. The
+#' methodology can be directly adapted to test for serial independence of d
+#' successive observations of a stationary categorical time series.
+#' 
+#' For categorical time series,
+#' especially those of a nominal (non ordinal) nature, the user should be
+#' aware that tests of serial independence obtained by methods suited to
+#' quantitative sequences by quantification of the labels are not 
+#' invariant to permutation of the labels contrary to the test described here.
+#' @usage A.dep.tests(Xmat, choice = 1, d = 0, m = d, freqname = "", type = "text")
+#' @param Xmat 
+#' @param choice 
+#' @param d 
+#' @param m 
+#' @param freqname 
+#' @param type 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 A.dep.tests <- function(Xmat,choice=1,d=0,m=d,freqname="",type="text") {
 
   if (!(choice %in% 1:2)) stop("choice should be 1 or 2")

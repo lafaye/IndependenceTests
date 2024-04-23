@@ -5,14 +5,16 @@
 \alias{highschool}
 \title{High school recreational drug use data}
 \format{
-## `highschool`
+\subsection{\code{highschool}}{
+
 A data frame with 8rows and 4 columns:
 \describe{
-  \item{alcohol}{Logical, 1, 2}
-  \item{cigarette}{Logical, 1, 2}
-  \item{marijuana}{Logical, 1, 2}
-  \item{count}{A numeric vector of frequencies}
-  ...
+\item{alcohol}{Logical, 1, 2}
+\item{cigarette}{Logical, 1, 2}
+\item{marijuana}{Logical, 1, 2}
+\item{count}{A numeric vector of frequencies}
+...
+}
 }
 }
 \source{
@@ -23,10 +25,10 @@ highschool
 }
 \description{
 A subset of highschool data on alcohol, cigarette and marijuana use for
-highschool seniors. Data from a 1992 survey by the Wright State University 
+highschool seniors. Data from a 1992 survey by the Wright State University
 School ofMedecine and the United Health Services in Dayton, Ohio. The survey
 asked 2276 students in their final year of highschool in a nonurban area
-near Dayton, Ohio, whether they had ever used alcohol, cigarettes, or 
+near Dayton, Ohio, whether they had ever used alcohol, cigarettes, or
 marijuana.
 }
 \keyword{datasets}
