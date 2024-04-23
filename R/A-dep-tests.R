@@ -15,17 +15,33 @@
 #' quantitative sequences by quantification of the labels are not 
 #' invariant to permutation of the labels contrary to the test described here.
 #' @usage A.dep.tests(Xmat, choice = 1, d = 0, m = d, freqname = "", type = "text")
-#' @param Xmat 
-#' @param choice 
-#' @param d 
-#' @param m 
-#' @param freqname 
-#' @param type 
+#' @param Xmat Table, matrix or data-frame of the contingency table data,
+#' if \code{choice} = 1. Vector of the time series data, if
+#' \code{choice} = 2.
+#' @param choice Integer. 1 for mutual independence, 2 for serial independence.
+#' @param d Integer. Used only if \code{choice} = 2 for the number of successive obervations.
+#' @param m Integer. Maximum cardinality of subsets \eqn{A} for which an
+#' \eqn{A}-dependence statistic is required. This option is particularly
+#' useful for large values of \code{d}.
+#' @param freqname Character. Used only if \code{choice} = 1 and when \code{Xmat} is a
+#' matrix or a data-frame to identify the variable for the counts (frequencies).
+#' @param type "text" or "html"
 #'
 #' @return
+#'   \item{TA}{\eqn{A}-dependence statistics for each subset \eqn{A} of variables.}
+#'   \item{fA}{degrees of freedom of the \eqn{A}-dependence statistics.}
+#'   \item{pvalA}{\eqn{p}-values of the \eqn{A}-dependence statistics.}
+#'   \item{X}{summary of the results.}
+#'   \item{X2}{test statistic for mutual independence obtained by the
+#'    sum of the \eqn{A}-dependence statistics, if \code{choice} = 1.}
+#'    \item{Y2}{test statistic for serial independence obtained by the
+#'    sum of the \eqn{A}-dependence statistics, if \code{choice} = 2.}
+#'    \item{f}{number of degrees of freedom associated with the test
+#'    statistic \code{X2} or \code{Y2}.}
+#'    \item{pval}{the \eqn{p}-value associated with the test statistic \code{X2} or \code{Y2}.}
 #' @export
 #'
-#' @examples
+#' @author Bilodeau M., Lafaye de Micheaux P.
 A.dep.tests <- function(Xmat,choice=1,d=0,m=d,freqname="",type="text") {
 
   if (!(choice %in% 1:2)) stop("choice should be 1 or 2")

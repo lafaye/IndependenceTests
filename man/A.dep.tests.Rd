@@ -7,17 +7,35 @@
 A.dep.tests(Xmat, choice = 1, d = 0, m = d, freqname = "", type = "text")
 }
 \arguments{
-\item{Xmat}{}
+\item{Xmat}{Table, matrix or data-frame of the contingency table data,
+if \code{choice} = 1. Vector of the time series data, if
+\code{choice} = 2.}
 
-\item{choice}{}
+\item{choice}{Integer. 1 for mutual independence, 2 for serial independence.}
 
-\item{d}{}
+\item{d}{Integer. Used only if \code{choice} = 2 for the number of successive obervations.}
 
-\item{m}{}
+\item{m}{Integer. Maximum cardinality of subsets \eqn{A} for which an
+\eqn{A}-dependence statistic is required. This option is particularly
+useful for large values of \code{d}.}
 
-\item{freqname}{}
+\item{freqname}{Character. Used only if \code{choice} = 1 and when \code{Xmat} is a
+matrix or a data-frame to identify the variable for the counts (frequencies).}
 
-\item{type}{}
+\item{type}{"text" or "html"}
+}
+\value{
+\item{TA}{\eqn{A}-dependence statistics for each subset \eqn{A} of variables.}
+\item{fA}{degrees of freedom of the \eqn{A}-dependence statistics.}
+\item{pvalA}{\eqn{p}-values of the \eqn{A}-dependence statistics.}
+\item{X}{summary of the results.}
+\item{X2}{test statistic for mutual independence obtained by the
+sum of the \eqn{A}-dependence statistics, if \code{choice} = 1.}
+\item{Y2}{test statistic for serial independence obtained by the
+sum of the \eqn{A}-dependence statistics, if \code{choice} = 2.}
+\item{f}{number of degrees of freedom associated with the test
+statistic \code{X2} or \code{Y2}.}
+\item{pval}{the \eqn{p}-value associated with the test statistic \code{X2} or \code{Y2}.}
 }
 \description{
 The tests are constructed from the \enc{Möbius}{Mobius} transformation
@@ -35,4 +53,7 @@ especially those of a nominal (non ordinal) nature, the user should be
 aware that tests of serial independence obtained by methods suited to
 quantitative sequences by quantification of the labels are not
 invariant to permutation of the labels contrary to the test described here.
+}
+\author{
+Bilodeau M., Lafaye de Micheaux P.
 }
