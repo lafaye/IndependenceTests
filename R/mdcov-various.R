@@ -2,8 +2,10 @@
 # Computation of phihat and phitilde #
 ######################################
 
+#' @keywords internal
 phiStandGauss <- function(vect) return(exp(-sum(vect ^ 2) / 2)) # NOT USED
   
+#' @keywords internal
 phinhat <- function(vect, X, Cpp = TRUE) {
     if (Cpp) { # This one uses a C code.
         res <- .C("phinhatC", as.double(vect), as.double(X), as.integer(ncol(X)), as.integer(nrow(X)), res = as.complex(0.0), PACKAGE = "IndependenceTests")$res
@@ -13,6 +15,7 @@ phinhat <- function(vect, X, Cpp = TRUE) {
   return(res)
 }
 
+#' @keywords internal
 phinlhat <- function(vect, l, X, vecd) { # NOT USED
   p <- length(vecd)
   if ((l > p) | (l < 1)) stop("l should be between 1 and p")
@@ -21,6 +24,7 @@ phinlhat <- function(vect, l, X, vecd) { # NOT USED
   return(res)
 }
 
+#' @keywords internal
 phintilde <- function(vect, X, vecd) { # NOT USED
     p <- length(vecd)
     prod <- 1
@@ -35,7 +39,7 @@ phintilde <- function(vect, X, vecd) { # NOT USED
 # Computation of the covariance structure #
 ###########################################
 
-
+#' @keywords internal
 Cst <- function(vecs, vect, vecd) { # True covariance structure.
   p <- length(vecd)
   prod1 <- prod2 <- 1
@@ -54,6 +58,7 @@ Cst <- function(vecs, vect, vecd) { # True covariance structure.
   return(res)  
 }
 
+#' @keywords internal
 Cmat <- function(yMat,vecd) { # Matrix computed using the true covariance.
   # yMat: N x q
     N <- nrow(yMat)
@@ -66,6 +71,7 @@ Cmat <- function(yMat,vecd) { # Matrix computed using the true covariance.
     return(res)
 }
 
+#' @keywords internal
 Cnhat <- function(vecs, vect, X, vecd, Cpp = TRUE) { # Estimated covariance structure.
     if (Cpp) { # This one uses a C code.
         res <- .C("CnhatC", as.double(vecs), as.double(vect), as.double(X), as.integer(nrow(X)), as.integer(ncol(X)), as.integer(length(vecd)), as.integer(vecd), res = as.complex(0.0), PACKAGE = "IndependenceTests")$res
@@ -89,7 +95,7 @@ Cnhat <- function(vecs, vect, X, vecd, Cpp = TRUE) { # Estimated covariance stru
     return(res)
 }
 
-
+#' @keywords internal
 Cnhatmat <- function(yMat, X, vecd, Cpp = TRUE) { # Matrix computed using the estimated covariance.
   # yMat: N x q
     N <- nrow(yMat)

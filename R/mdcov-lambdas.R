@@ -1,6 +1,7 @@
 #######################################################
 # Computation of eigenvalues of the integral operator #
 #######################################################
+#' @keywords internal
 
 .sinint <- function(y) {
 
@@ -87,6 +88,7 @@
     return(res)
 }
 
+#' @keywords internal
 .Cnhatmat <- function(yMat, X, vecd) { # Matrix computed using the estimated covariance.
   # yMat: N x q
     N <- nrow(yMat)
@@ -96,7 +98,7 @@
     return(res)
 }
 
-
+#' @keywords internal
 .mdcov.lambdas <- function(N = 200, X, vecd, weight.choice = 1, cubature = FALSE, a = 1, K = 100, thresh.eigen = 10 ^ -8) {
 
 

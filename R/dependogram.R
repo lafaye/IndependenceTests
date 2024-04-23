@@ -1,3 +1,18 @@
+#' Title
+#'
+#' @param X 
+#' @param vecd.or.p 
+#' @param N 
+#' @param B 
+#' @param alpha 
+#' @param display 
+#' @param graphics 
+#' @param nbclus 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 dependogram <- function(X,vecd.or.p,N=10,B=2000,alpha=0.05,display=TRUE,graphics=TRUE,nbclus=1) {
 
 

@@ -6,3 +6,5 @@ src/*.dll
 \.o$
 \.so$
 \.dll$
+^INDEX$
+

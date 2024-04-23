@@ -9,7 +9,7 @@
 Functions for non-parametric tests of independence (mutual or serial) between
 some quantitative random vectors, as described in
 \href{https://www.doi.org/10.1016/j.jspi.2008.11.006}{Bilodeau M. and Lafaye de Micheaux P. (2009)},
-in Beran R., \href{https://www.doi.org/10.1016/j.jmva.2007.01.009}{Bilodeau M. and Lafaye de Micheaux P. (2007)}
+in \href{https://www.doi.org/10.1016/j.jmva.2007.01.009}{Beran R., Bilodeau M. and Lafaye de Micheaux P. (2007)}
 and in \href{https://www.doi.org/10.1016/j.jmva.2016.09.014}{Fan Y., Lafaye de Micheaux P., Penev S. and Salopek D. (2017)}
 }
 \author{
