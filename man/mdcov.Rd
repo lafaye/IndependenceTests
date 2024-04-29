@@ -103,10 +103,10 @@ mdcov(W[,c(1:2, 4:6)], vecd = c(2, 2), a, weight.choice = 1, N = 100, cubature =
 set.seed(3)
 n <- 300
 W <- sample(1:8, n, replace = TRUE)
-X1 <- W \\%in\\% c(1, 2, 3, 5)
-X2 <- W \\%in\\% c(1, 2, 4, 6)
-X3 <- W \\%in\\% c(1, 3, 4, 7)
-X4 <- W \\%in\\% c(2, 3, 4, 8)
+X1 <- W \%in\% c(1, 2, 3, 5)
+X2 <- W \%in\% c(1, 2, 4, 6)
+X3 <- W \%in\% c(1, 3, 4, 7)
+X4 <- W \%in\% c(2, 3, 4, 8)
 X <- cbind(X1, X2, X3, X4)
 # pairwise independence
 mdcov(X[,c(1, 2)], vecd = c(1, 1), a, weight.choice = 1, cubature = TRUE)

@@ -82,10 +82,10 @@
 #'set.seed(3)
 #'n <- 300
 #'W <- sample(1:8, n, replace = TRUE)
-#'X1 <- W \%in\% c(1, 2, 3, 5)
-#'X2 <- W \%in\% c(1, 2, 4, 6)
-#'X3 <- W \%in\% c(1, 3, 4, 7)
-#'X4 <- W \%in\% c(2, 3, 4, 8)
+#'X1 <- W %in% c(1, 2, 3, 5)
+#'X2 <- W %in% c(1, 2, 4, 6)
+#'X3 <- W %in% c(1, 3, 4, 7)
+#'X4 <- W %in% c(2, 3, 4, 8)
 #'X <- cbind(X1, X2, X3, X4)
 #'# pairwise independence
 #'mdcov(X[,c(1, 2)], vecd = c(1, 1), a, weight.choice = 1, cubature = TRUE)
@@ -112,6 +112,7 @@
 #' \item{Hn}{the denominator of \eqn{nT_n(w)}{nTn(w)}, namely \eqn{H_n}}
 #' \item{pvalue}{the \eqn{p}-value of the test}
 #' \item{lambdas}{the vector of eigenvalues computed (they have not been divided by their sum)}
+
 mdcov <- function(X, vecd, a = 1, weight.choice = 1, N = 200, cubature = FALSE,
                   K = 100, epsrel = 10 ^ -6, norming = TRUE,
                   thresh.eigen = 10 ^ -8, estim.a = FALSE, Cpp = TRUE, pval.comp = TRUE) {
