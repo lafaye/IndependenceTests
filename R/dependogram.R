@@ -1,3 +1,6 @@
+##' @useDynLib IndependenceTests
+NULL
+
 #' Nonparametric tests of independence between random vectors
 #' 
 #' @description
