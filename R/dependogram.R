@@ -111,7 +111,7 @@ NULL
 #'                 0, 0, 0, 1,.1,.2,
 #'                 0, 0,.4,.1, 1, 0,
 #'                 0, 0,.5,.2, 0, 1), nrow = 6, byrow = TRUE)
-#' X <- mvrnorm(n, mu, Psi)
+#' X <- MASS::mvrnorm(n, mu, Psi)
 #' \donttest{
 #'   dependogram(X, vecd.or.p = c(2, 2, 2), N = 10, B = 20, alpha = 0.05,
 #'               display = TRUE, graphics = TRUE)
