@@ -87,7 +87,7 @@ Sigma <- matrix(c(
  0 , 0 , .4 , .1 ,  1 ,  0 ,
  0 , 0 , .5 , .2 ,  0 ,  1 ) ,
  nrow = 6 , ncol = 6)   
-W <- mvrnorm(n = n, mu = rep(0,6), Sigma = Sigma, tol = 1e-6, empirical = FALSE, EISPACK = FALSE)
+W <- MASS::mvrnorm(n = n, mu = rep(0,6), Sigma = Sigma, tol = 1e-6, empirical = FALSE, EISPACK = FALSE)
 mdcov(W, vecd = c(2, 2, 2), a, weight.choice = 1, N = 100, cubature = TRUE, epsrel = 10 ^ -7)
 
 # X^{(1)} with X^{(2)}^2
