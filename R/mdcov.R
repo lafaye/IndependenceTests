@@ -1,33 +1,42 @@
-#' Computation of the multidimensional distance covariance statistic for mutual independence using characteristic functions.
+#' Computation of the multidimensional distance covariance statistic for mutual
+#'independence using characteristic functions.
 #'
 #' @description
-#' Computation of the multidimensional distance covariance statistic for mutual independence using
-#' characteristic functions. Compute the eigenvalues associated with the empirical covariance of the
-#' limiting Gaussian procces. Compute the \eqn{p}-value associated with the test statistic, using the Imhof procedure.
+#' Computation of the multidimensional distance covariance statistic for mutual
+#' independence using characteristic functions. Compute the eigenvalues 
+#' associated with the empirical covariance of the
+#' limiting Gaussian procces. Compute the \eqn{p}-value associated with the test
+#'  statistic, using the Imhof procedure.
 #' 
-#' @usage mdcov(X, vecd, a = 1, weight.choice = 1, N = 200, cubature = FALSE, K =
-#' 100, epsrel = 10 ^ -6, norming = TRUE, thresh.eigen = 10 ^ -8, estim.a =
+#' @usage mdcov(X, vecd, a = 1, weight.choice = 1, N = 200, cubature = FALSE,
+#' K = 100, epsrel = 10 ^ -6, norming = TRUE, thresh.eigen = 10 ^ -8, estim.a =
 #' FALSE, Cpp = TRUE, pval.comp = TRUE)
-#' @param X Data.frame or matrix with observations corresponding to rows and variables to columns.
+#' @param X Data.frame or matrix with observations corresponding to rows and
+#'  variables to columns.
 #' @param vecd a vector giving the sizes of each subvector.
 #' @param a real number parameter for the weight function.
-#' @param weight.choice Integer value in 1, 2, 3, 4, 5 corresponding to the choice in our paper.
+#' @param weight.choice Integer value in 1, 2, 3, 4, 5 corresponding to the
+#'  choice in our paper.
 #' @param N Number of Monte-Carlo samples.
-#' @param cubature Logical. If \code{FALSE}, a Monte-Carlo approach is used. If \code{TRUE}, a cubature approach
-#' is used.
+#' @param cubature Logical. If \code{FALSE}, a Monte-Carlo approach is used. 
+#' If \code{TRUE}, a cubature approach is used.
 #' @param K Number of eigenvalues to compute.
 #' @param epsrel relative accuracy requested for the Imhof procedure.
 #' @param norming Logical. Should we normalize the test statistic with \eqn{H_n}.
-#' @param thresh.eigen We will not compute eigenvalues (involved in the limiting distribution) below that threshold.
+#' @param thresh.eigen We will not compute eigenvalues (involved in the limiting
+#'  distribution) below that threshold.
 #' @param estim.a Logical. Should we automatically estimate the value of \eqn{a}.
 #' @param Cpp Logical. If \code{TRUE} computations will be done using a fast C code. 
-#' The use of \code{FALSE} is only useful to compare the results with the one given by the C code.
+#' The use of \code{FALSE} is only useful to compare the results with the one 
+#' given by the C code.
 #' @param pval.comp Logical. If \code{FALSE} do not compute the p-values and lambdas.
 #' 
 #' @export
 #' 
 #' @author Lafaye de Micheaux P.
-#' @references Fan Y., Lafaye de Micheaux P., Penev S. and Salopek D. (2017). Multivariate nonparametric test of independence, Journal of Multivariate Analysis, 153, 189-210.
+#' @references Fan Y., Lafaye de Micheaux P., Penev S. and Salopek D. (2017). 
+#' Multivariate nonparametric test of independence, Journal of Multivariate 
+#' Analysis, 153, 189-210.
 #' @examples
 #' \donttest{
 #' a <- 1
@@ -66,8 +75,10 @@
 #'  0 , 0 , .4 , .1 ,  1 ,  0 ,
 #'  0 , 0 , .5 , .2 ,  0 ,  1 ) ,
 #'  nrow = 6 , ncol = 6)   
-#' W <- MASS::mvrnorm(n = n, mu = rep(0,6), Sigma = Sigma, tol = 1e-6, empirical = FALSE, EISPACK = FALSE)
-#'mdcov(W, vecd = c(2, 2, 2), a, weight.choice = 1, N = 100, cubature = TRUE, epsrel = 10 ^ -7)
+#' W <- MASS::mvrnorm(n = n, mu = rep(0,6), Sigma = Sigma, tol = 1e-6, 
+#' empirical = FALSE, EISPACK = FALSE)
+#'mdcov(W, vecd = c(2, 2, 2), a, weight.choice = 1, N = 100, cubature = TRUE,
+#' epsrel = 10 ^ -7)
 #'
 #'# X^{(1)} with X^{(2)}^2
 #'mdcov(W[,1:4], vecd = c(2, 2), a, weight.choice = 1, N = 100, cubature = TRUE)
@@ -76,7 +87,8 @@
 #'mdcov(W[,2:6], vecd = c(2, 2), a, weight.choice = 1, N = 100, cubature = TRUE)
 #'
 #'# X^{(1)} with X^{(3)}^2
-#'mdcov(W[,c(1:2, 4:6)], vecd = c(2, 2), a, weight.choice = 1, N = 100, cubature = TRUE)
+#'mdcov(W[,c(1:2, 4:6)], vecd = c(2, 2), a, weight.choice = 1, N = 100, 
+#'cubature = TRUE)
 #'
 #'# 4.3 Four-dependent variables which are 2-independent and 3-independent
 #'set.seed(3)
@@ -89,7 +101,8 @@
 #'X <- cbind(X1, X2, X3, X4)
 #'# pairwise independence
 #'mdcov(X[,c(1, 2)], vecd = c(1, 1), a, weight.choice = 1, cubature = TRUE)
-#'mdcov(X[,c(1, 3)], vecd = c(1, 1), a, weight.choice = 1, N = 100, cubature = TRUE)
+#'mdcov(X[,c(1, 3)], vecd = c(1, 1), a, weight.choice = 1, N = 100, 
+#'cubature = TRUE)
 #'mdcov(X[,c(1, 4)], vecd = c(1, 1), a, weight.choice = 1, cubature = TRUE)
 #'mdcov(X[,c(2, 3)], vecd = c(1, 1), a, weight.choice = 1, cubature = TRUE)
 #'mdcov(X[,c(2, 4)], vecd = c(1, 1), a, weight.choice = 1, cubature = TRUE)
@@ -108,10 +121,12 @@
 #'}
 #' @return
 #' A list with the following components:
-#' \item{mdcov}{the value of the statistic \eqn{nT_n(w)}{n * Tn(w)} (this value has been normed if \code{norming = TRUE})}
+#' \item{mdcov}{the value of the statistic \eqn{nT_n(w)}{n * Tn(w)} (this 
+#' value has been normed if \code{norming = TRUE})}
 #' \item{Hn}{the denominator of \eqn{nT_n(w)}{nTn(w)}, namely \eqn{H_n}}
 #' \item{pvalue}{the \eqn{p}-value of the test}
-#' \item{lambdas}{the vector of eigenvalues computed (they have not been divided by their sum)}
+#' \item{lambdas}{the vector of eigenvalues computed (they have not been divided
+#'  by their sum)}
 
 mdcov <- function(X, vecd, a = 1, weight.choice = 1, N = 200, cubature = FALSE,
                   K = 100, epsrel = 10 ^ -6, norming = TRUE,

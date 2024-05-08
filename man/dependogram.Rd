@@ -9,7 +9,8 @@ dependogram(X, vecd.or.p, N = 10, B = 2000, alpha = 0.05,
  display = TRUE, graphics = TRUE, nbclus = 1)
 }
 \arguments{
-\item{X}{Data.frame or matrix with observations corresponding to rows and variables to columns.}
+\item{X}{Data.frame or matrix with observations corresponding to rows and
+variables to columns.}
 
 \item{vecd.or.p}{For the mutual independence problem 1), a vector
 giving the sizes of each subvector. For the serial independence
@@ -23,11 +24,13 @@ be slightly modified if \code{nbclus} > 1}
 
 \item{alpha}{Double. Global significance level of the test.}
 
-\item{display}{Logical. TRUE to display values of the \eqn{A}-dependence statistics.}
+\item{display}{Logical. TRUE to display values of the \eqn{A}-dependence
+statistics.}
 
 \item{graphics}{Logical. TRUE to plot the dependogram.}
 
-\item{nbclus}{Integer. Number of nodes in the cluster. Used only for parallel computations.}
+\item{nbclus}{Integer. Number of nodes in the cluster. Used only for parallel
+computations.}
 }
 \value{
 A list with the following components:
@@ -36,21 +39,23 @@ In the mutual independence case:
 
 \item{norm.RnA}{Supremum norm (Kolmogorov). Test statistic is
 \eqn{\|R_{n,A}\|}{||Rna||} and is computed
-from the \enc{Möbius}{Mobius} independence half space processes \eqn{R_{n,A}}{RnA}.}
+from the \enc{Möbius}{Mobius} independence half space processes
+\eqn{R_{n,A}}{RnA}.}
 \item{Rn}{Maximum value of \code{norm.RnA} over all subsets \eqn{A} of variables.}
 \item{rA}{Critical value of the bootstrap distribution of the test
 statistic \eqn{\|R_{n,A}\|}{||Rna||}.}
 \item{r}{Critical value of the bootstrap distribution of the test
 statistic \eqn{R_n}{Rn}.}
-\item{RnAsstar}{Matrix of size \eqn{(2 ^ p - p - 1)\times B}{(2 ^ p -
-                                                               p - 1) x B} which contains, for each of the \eqn{B} bootstrap samples, the statistics \code{norm.RnA} for all
-subsets \eqn{A} of variables.}
+\item{RnAsstar}{Matrix of size \eqn{(2 ^ p - p - 1)\times B}{(2 ^ p - 
+p - 1) x B} which contains, for each of the \eqn{B} bootstrap samples,
+the statistics \code{norm.RnA} for all subsets \eqn{A} of variables.}
 
 In the serial case:
 
 \item{norm.SnA}{Supremum norm (Kolmogorov). Test statistic  is
 \eqn{\|S_{n,A}\|}{||Sna||} and is computed
-from the \enc{Möbius}{Mobius} independence half space processes \eqn{S_{n,A}}{SnA}.}
+from the \enc{Möbius}{Mobius} independence half space processes
+\eqn{S_{n,A}}{SnA}.}
 \item{Sn}{Maximum value of \code{norm.SnA} over all subsets \eqn{A} of variables.}
 \item{sA}{Critical value of the bootstrap distribution of the test
 statistic \eqn{\|S_{n,A}\|}{||Sna||}.}
@@ -58,7 +63,8 @@ statistic \eqn{\|S_{n,A}\|}{||Sna||}.}
 statistic \eqn{S_n}{Sn}.}
 \item{SnAsstar}{Matrix of size \eqn{(2 ^ {p - 1} - 1)\times B}{(2 ^ {p
  - 1} - 1) x B} which
-contains, for each of the \eqn{B} bootstrap samples, the statistics \code{norm.SnA} for all
+contains, for each of the \eqn{B} bootstrap samples, the statistics
+\code{norm.SnA} for all
 subsets \eqn{A} of variables.}
 }
 \description{
@@ -90,7 +96,8 @@ the bootstrap which was shown to be consistent in this context.
 # Example 4.1: Test of mutual independence between four discrete Poisson
 #variables. The pair (X1,X2) is independent of the pair (X3,X4), with
 #each pair having a correlation of 3/4.
-# NOTE: with B=1000, this one took 65s with nbclus=1 and 15s with nbclus=7 on my computer.
+# NOTE: with B=1000, this one took 65s with nbclus=1 and 15s with nbclus=7 
+# on my computer.
 n <- 100
 W1 <- rpois(n, 1)
 W3 <- rpois(n, 1)
@@ -175,7 +182,8 @@ sqrt(n) * max(I/n - I ^ 2 / n ^ 2)
 }
 }
 \references{
-Beran R., Bilodeau M., Lafaye de Micheaux P. (2007). Nonparametric tests of independence between random vectors, Journal of Multivariate Analysis, 98, 1805-1824.
+Beran R., Bilodeau M., Lafaye de Micheaux P. (2007).
+Nonparametric tests of independence between random vectors, Journal of Multivariate Analysis, 98, 1805-1824.
 }
 \author{
 Bilodeau M., Lafaye de Micheaux P.
